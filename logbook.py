@@ -8,14 +8,14 @@ PATH = "/home/nathan/Documents/logbook/j2b"
 def mkjournal():
 	curr_date = os.popen("date | cut -c 6-18").read()
 	curr_date = curr_date[:-1]
-	if not curr_date in os.listdir(PATH):
+	try:
 		text = str(input("(write your journal down) > "))
 		format = f"{curr_date} / {text}"
 		with open(f"{PATH}{curr_date}", "x") as r:
 			r.write(format)
 			r.close()
 			sys.exit("Journal saved.")
-	else:
+	except FileExistsError:
 		print("File already exists. Delete [0/1] ?")
 		ans = int(input("\n: "))
 		if ans == 0:
