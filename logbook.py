@@ -26,19 +26,4 @@ def mkjournal():
 		else:
 			sys.exit("Incorrect input detected.")
 
-#        formated_file = ""
-#        i = 0
-#        for files in os.listdir(PATH):
-#            i += 1
-#            print(str(i) + ": " + files)
-#            files = os.listdir(PATH)
-#            last_file = files[-1]
-#            for chars in last_file:
-#                if chars == " ":
-#                    formated_file += "\ "
-#                else:
-#                    formated_file += chars
-#            rm_file = os.system(f"rm -rf {PATH}{eval(formated_file)}")
-#        sys.exit("Journal already exists.")
-
 mkjournal()
