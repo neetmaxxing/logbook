@@ -2,7 +2,7 @@ import os, sys
 
 #change the cloned repo path in the variable below
 global PATH
-PATH = "/home/nathan/Documents/logbook/j2b"
+PATH = "/home/nathan/Documents/logbook/j2b/"
 
 
 def find_read():
@@ -11,7 +11,7 @@ def find_read():
 3:Quit""")
 
     ans = int(input("\n: "))
-    ans_dic = {1 :sort, 2:search, 3:leave}
+    ans_dic = {1 :sort, 2:keysearch, 3:leave}
     act = ans_dic.get(ans, error)
     act()
 
@@ -30,21 +30,27 @@ def oldest():
     search("-time=ctime --inode")
         
 def latest():
-    search("-t -h")
+    search("t -h --inode")
 def vol():
     print("Sorting size by largest first. \n")
-    search("-S")
+    search("S --inode")
 
+
+def keysearch():
+    keyword = str(input("(enter keywords): "))
+    if not keyword == "":
+        search_file = os.popen(f"ls | grep {keyword}").read()
+    else:
+        print(os.listdir(PATH))
 
 def search(command):
     query = os.system(f"ls -l -{command}")
     if query == 256:
         sys.exit("No file matched your query. Exiting...")
     elif query == 32512:
-        sys.exit("Bash command (find) missing... Exiting...")
-    
-    return query
+        error()
 
+    print(query)
 
 def leave():
     sys.exit("Quitting.")

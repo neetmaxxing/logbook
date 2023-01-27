@@ -2,7 +2,7 @@ import os, sys
 
 #change the cloned repo path in the variable below
 global PATH
-PATH = "/home/nathan/Documents/logbook/j2b"
+PATH = "/home/nathan/Documents/logbook/j2b/"
 
 
 def mkjournal():
